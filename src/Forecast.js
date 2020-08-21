@@ -28,7 +28,7 @@ const Forecast = () => {
 
     const getForecastWeather = () => {
         const coord = JSON.parse(localStorage.getItem("coord"));
-        const url = `http://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=imperial&exclude=hourly,minutely`;
+        const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=imperial&exclude=hourly,minutely`;
         fetchForecastWeather(url);
     }
 
@@ -36,7 +36,7 @@ const Forecast = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 position => {
-                    const url = `http://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial&exclude=hourly,minutely`;
+                    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial&exclude=hourly,minutely`;
                     fetchForecastWeather(url);
                 },
                 error => {
@@ -82,7 +82,7 @@ const Forecast = () => {
                                         <td>{new Date(+item.dt * 1000).toLocaleDateString("en-US",options)}</td>
                                         <td>{Math.ceil(+item.temp.max)} &#8457;</td>
                                         <td>{Math.ceil(+item.temp.min)} &#8457;</td>
-                                        <td><img alt="weather-icon" src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img></td>
+                                        <td><img alt="weather-icon" src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}></img></td>
                                     </tr>
                                 );
                             })}

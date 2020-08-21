@@ -23,7 +23,7 @@ const Current = () => {
 
     const getCurrentWeather = () => {
         const coord = JSON.parse(localStorage.getItem("coord"));
-        const url = `http://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=imperial`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=imperial`;
         fetchCurrentWeather(url);
     }
 
@@ -31,7 +31,7 @@ const Current = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 position => {
-                    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
+                    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
                     fetchCurrentWeather(url);
                 },
                 error => {
@@ -62,7 +62,7 @@ const Current = () => {
                                     <h2>{Math.ceil(+today.main.temp)} &#8457;</h2>
                                 </td>
                                 {today.weather[0].icon && (
-                                    <td><img alt="weather-icon" src={`http://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png`}></img></td>
+                                    <td><img alt="weather-icon" src={`https://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png`}></img></td>
                                 )}
                             </tr>
                         </tbody>
